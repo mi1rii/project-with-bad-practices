@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 
 const CrudApp = () => {
-  // Mala práctica: Componente demasiado largo, debería dividirse en componentes más pequeños.
+  // Mala práctica: Componente demasiado largo, debería dividirse en componentes más pequeños
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [editItem, setEditItem] = useState(null);
