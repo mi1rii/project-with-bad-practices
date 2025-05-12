@@ -2,11 +2,14 @@
 "use client"
 import { useState, useEffect } from 'react';
 
+// Mala práctica: Manejo incorrecto del estado, se utiliza un estado global para algo que podría ser local.
 const CrudApp = () => {
+  // Mala práctica: Componente demasiado largo, debería dividirse en componentes más pequeños.
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [editItem, setEditItem] = useState(null);
   const [editValue, setEditValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const [globalCounter, setGlobalCounter] = useState(0);
 
@@ -14,11 +17,13 @@ const CrudApp = () => {
     setGlobalCounter(globalCounter + 1);
   };
 
+  // Mala práctica: useEffect desordenado, no tiene un propósito claro más allá de un console.log.
   useEffect(() => {
     console.log('Component mounted or updated');
   }, [items]);
 
   const addItem = () => {
+    // Mala práctica: Lógica repetida, validación de entrada podría abstraerse en una función reutilizable.
     if (newItem.trim() === '') return;
     setItems([...items, { id: Date.now(), value: newItem }]);
     setNewItem('');
@@ -39,6 +44,11 @@ const CrudApp = () => {
     setEditValue('');
   };
 
+  const filteredItems = items.filter(item =>
+    // Mala práctica: Filtro implementado directamente en el renderizado, podría optimizarse.
+    item.value.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
       <h1 style={{ textAlign: 'center' }}>CRUD App</h1>
@@ -51,6 +61,15 @@ const CrudApp = () => {
           style={{ padding: '10px', marginRight: '10px', width: '300px' }}
         />
         <button onClick={addItem} style={{ padding: '10px 20px' }}>Add</button>
+      </div>
+      <div style={{ marginBottom: '20px', textAlign: 'center' }}>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search items"
+          style={{ padding: '10px', width: '300px' }}
+        />
       </div>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <button onClick={incrementGlobalCounter} style={{ padding: '10px 20px' }}>Increment Global Counter</button>
@@ -65,7 +84,7 @@ const CrudApp = () => {
           </tr>
         </thead>
         <tbody>
-          {items.map(item => (
+          {filteredItems.map(item => (
             <tr key={item.id}>
               <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>{item.id}</td>
               <td style={{ border: '1px solid #ddd', padding: '8px', textAlign: 'center' }}>

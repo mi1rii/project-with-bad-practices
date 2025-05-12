@@ -1,64 +1,72 @@
 ## Fragmentos antes/después del código
 
 ### Fragmento 1: useEffect desordenado
-ANTES:
+Antes:
 > **Problema:** No tiene un propósito claro más allá de un `console.log`.
 ```typescript
 useEffect(() => {
-    console.log('Component mounted or updated');
+  console.log('Component mounted or updated');
 }, [items]);
 ```
-DESPUÉS:
-> **Corrección:** texto aqui
+> **Correción:** texto aqui
 ```typescript
 codigo aqui
 ```
 
 ### Fragmento 2: Componente demasiado largo
-ANTES:
 > **Problema:** Debería dividirse en componentes más pequeños.
 ```typescript
 const CrudApp = () => {
-    const [items, setItems] = useState([]);
-    const [newItem, setNewItem] = useState('');
-    const [editItem, setEditItem] = useState(null);
-    const [editValue, setEditValue] = useState('');
-    // ...existing code...
+  const [items, setItems] = useState([]);
+  const [newItem, setNewItem] = useState('');
+  const [editItem, setEditItem] = useState(null);
+  const [editValue, setEditValue] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [globalCounter, setGlobalCounter] = useState(0);
+  // ...existing code...
 };
 ```
-DESPUÉS:
-> **Corrección:** texto aqui
+> **Correción:** texto aqui
 ```typescript
 codigo aqui
 ```
 
 ### Fragmento 3: Lógica repetida
-ANTES:
 > **Problema:** Validación de entrada podría abstraerse en una función reutilizable.
 ```typescript
 const addItem = () => {
-    if (newItem.trim() === '') return;
-    setItems([...items, { id: Date.now(), value: newItem }]);
-    setNewItem('');
+  if (newItem.trim() === '') return;
+  setItems([...items, { id: Date.now(), value: newItem }]);
+  setNewItem('');
 };
 ```
-DESPUÉS:
-> **Corrección:** texto aqui
+> **Correción:** texto aqui
 ```typescript
 codigo aqui
 ```
 
 ### Fragmento 4: Manejo incorrecto del estado
-ANTES:
 > **Problema:** Se utiliza un estado global para algo que podría ser local.
 ```typescript
-  const [globalCounter, setGlobalCounter] = useState(0);
-  const incrementGlobalCounter = () => {
-    setGlobalCounter(globalCounter + 1);
-  };
+const [globalCounter, setGlobalCounter] = useState(0);
+
+const incrementGlobalCounter = () => {
+  setGlobalCounter(globalCounter + 1);
+};
 ```
-DESPUÉS:
-> **Corrección:** texto aqui
+> **Correción:** texto aqui
+```typescript
+codigo aqui
+```
+
+### Fragmento 5: Filtro implementado directamente en el renderizado
+> **Problema:** Podría optimizarse para evitar cálculos innecesarios en cada renderizado.
+```typescript
+const filteredItems = items.filter(item =>
+  item.value.toLowerCase().includes(searchQuery.toLowerCase())
+);
+```
+> **Correción:** texto aqui
 ```typescript
 codigo aqui
 ```
