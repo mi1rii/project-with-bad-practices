@@ -10,6 +10,9 @@ useEffect(() => {
 ```
 DESPUÉS:
 > **Corrección:** texto aqui
+```typescript
+codigo aqui
+```
 
 ### Fragmento 2: Componente demasiado largo
 ANTES:
@@ -25,6 +28,9 @@ const CrudApp = () => {
 ```
 DESPUÉS:
 > **Corrección:** texto aqui
+```typescript
+codigo aqui
+```
 
 ### Fragmento 3: Lógica repetid
 ANTES:
@@ -38,6 +44,9 @@ const addItem = () => {
 ```
 DESPUÉS:
 > **Corrección:** texto aqui
+```typescript
+codigo aqui
+```
 
 ## Explicación de qué problema resolviste
 
