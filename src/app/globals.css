@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Cambiar el fondo a blanco y ajustar los colores para resaltar */
+body {
+  background-color: white;
+  color: #333; /* Texto oscuro para buen contraste */
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: #0070f3; /* Azul vibrante para encabezados */
+}
+
+button {
+  background-color: #0070f3; /* Azul vibrante */
+  color: white; /* Texto blanco para contraste */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #005bb5; /* Azul más oscuro al pasar el cursor */
+}
+
+input {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+  max-width: 300px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+th {
+  background-color: #f4f4f4; /* Fondo claro para encabezados de tabla */
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Fondo alternado para filas */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Fondo al pasar el cursor por una fila */
+}
