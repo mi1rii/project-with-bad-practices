@@ -3,19 +3,22 @@
 import { useState, useEffect } from 'react';
 
 const CrudApp = () => {
-  // Mala práctica: Componente demasiado largo, debería dividirse en componentes más pequeños
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [editItem, setEditItem] = useState(null);
   const [editValue, setEditValue] = useState('');
 
-  // Mala práctica: useEffect desordenado, no tiene un propósito claro más allá de un console.log.
+  const [globalCounter, setGlobalCounter] = useState(0);
+
+  const incrementGlobalCounter = () => {
+    setGlobalCounter(globalCounter + 1);
+  };
+
   useEffect(() => {
     console.log('Component mounted or updated');
   }, [items]);
 
   const addItem = () => {
-    // Mala práctica: Lógica repetida, validación de entrada podría abstraerse en una función reutilizable.
     if (newItem.trim() === '') return;
     setItems([...items, { id: Date.now(), value: newItem }]);
     setNewItem('');
@@ -48,6 +51,10 @@ const CrudApp = () => {
           style={{ padding: '10px', marginRight: '10px', width: '300px' }}
         />
         <button onClick={addItem} style={{ padding: '10px 20px' }}>Add</button>
+      </div>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+        <button onClick={incrementGlobalCounter} style={{ padding: '10px 20px' }}>Increment Global Counter</button>
+        <p>Global Counter: {globalCounter}</p>
       </div>
       <table style={{ width: '100%', borderCollapse: 'collapse' }}>
         <thead>

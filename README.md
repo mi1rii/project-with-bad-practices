@@ -32,7 +32,7 @@ DESPUÉS:
 codigo aqui
 ```
 
-### Fragmento 3: Lógica repetid
+### Fragmento 3: Lógica repetida
 ANTES:
 > **Problema:** Validación de entrada podría abstraerse en una función reutilizable.
 ```typescript
@@ -41,6 +41,21 @@ const addItem = () => {
     setItems([...items, { id: Date.now(), value: newItem }]);
     setNewItem('');
 };
+```
+DESPUÉS:
+> **Corrección:** texto aqui
+```typescript
+codigo aqui
+```
+
+### Fragmento 4: Manejo incorrecto del estado
+ANTES:
+> **Problema:** Se utiliza un estado global para algo que podría ser local.
+```typescript
+  const [globalCounter, setGlobalCounter] = useState(0);
+  const incrementGlobalCounter = () => {
+    setGlobalCounter(globalCounter + 1);
+  };
 ```
 DESPUÉS:
 > **Corrección:** texto aqui
