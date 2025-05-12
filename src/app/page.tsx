@@ -2,9 +2,7 @@
 "use client"
 import { useState, useEffect } from 'react';
 
-// Mala práctica: Manejo incorrecto del estado, se utiliza un estado global para algo que podría ser local.
 const CrudApp = () => {
-  // Mala práctica: Componente demasiado largo, debería dividirse en componentes más pequeños.
   const [items, setItems] = useState([]);
   const [newItem, setNewItem] = useState('');
   const [editItem, setEditItem] = useState(null);
@@ -17,13 +15,11 @@ const CrudApp = () => {
     setGlobalCounter(globalCounter + 1);
   };
 
-  // Mala práctica: useEffect desordenado, no tiene un propósito claro más allá de un console.log.
   useEffect(() => {
     console.log('Component mounted or updated');
   }, [items]);
 
   const addItem = () => {
-    // Mala práctica: Lógica repetida, validación de entrada podría abstraerse en una función reutilizable.
     if (newItem.trim() === '') return;
     setItems([...items, { id: Date.now(), value: newItem }]);
     setNewItem('');
@@ -45,7 +41,6 @@ const CrudApp = () => {
   };
 
   const filteredItems = items.filter(item =>
-    // Mala práctica: Filtro implementado directamente en el renderizado, podría optimizarse.
     item.value.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
